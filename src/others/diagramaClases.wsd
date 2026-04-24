@@ -1,0 +1,64 @@
+@startuml proyecto-nuevo
+skinparam linetype ortho
+skinparam direction left
+
+class GestionExpedicion {
+
+}
+
+class Expedicion {
+    -int id
+    -int cupo
+    -String destino
+    -String estado
+    -String cronograma
+    -String hito
+}
+
+class EquipoTrabajo {
+}
+
+class Investigador {
+    -String rango
+    -String nombre
+    -String especialidad
+}
+
+class Bitacora {
+    -archivo.txt
+}
+
+class Logro {
+
+}
+
+class ModuloSeguridad {
+
+}
+
+class Inventario {
+    -ArrayList <herramienta> herramientas
+}
+
+class InventarioCritico {
+    -Boolean gps
+
+}
+
+class ControlRequisito {
+
+}
+
+Inventario "1" -- "1" GestionExpedicion : administra<
+ModuloSeguridad " 1 " -- " 1 " Expedicion : >verifica
+GestionExpedicion "1" -- " * " Expedicion : crea
+Expedicion "1" -- "  *  " EquipoTrabajo : tiene<
+EquipoTrabajo " 1 " -- " * " Investigador : posee<
+Expedicion "1  " -- "1" Bitacora : >tiene
+Bitacora " 1 " -- " * " Logro : registra<
+Inventario "1  " -- "1 " InventarioCritico
+Expedicion "1" -- "1" InventarioCritico :  tiene
+ControlRequisito "1" -- "1  " Expedicion
+
+
+@enduml

@@ -1,12 +1,7 @@
 # Sistema de Gestión de Expediciones Científicas
 
 ## Descripción
-Proyecto académico.
-
-## Autores
-- Maxi Moncada
-- Matias Moyano
-- Maximo Zalazar
+Proyecto académico sobre un sistema de gestión de expediciones científicas realizado con POO Java.
 
 ## Clases
 
@@ -21,3 +16,8 @@ Proyecto académico.
 - Logro
 - ModuloSeguridad
 - ControlRequisito
+
+## Autores
+- Maxi Moncada
+- Matias Moyano
+- Maximo Zalazar

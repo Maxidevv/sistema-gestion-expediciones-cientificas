@@ -15,7 +15,7 @@ class Expedicion {
     -String hito
 }
 
-class EquipoTrabajo {
+class EquipoDeTrabajo {
 }
 
 class Investigador {
@@ -36,13 +36,19 @@ class ModuloSeguridad {
 
 }
 
+class Herramienta {
+    -String nombre
+    -String tipo
+    -String estado
+    -int cantidad
+}
+
 class Inventario {
-    -ArrayList <herramienta> herramientas
+    -ArrayList <Herramienta> herramientas
 }
 
 class InventarioCritico {
     -Boolean gps
-
 }
 
 class ControlRequisito {
@@ -50,15 +56,15 @@ class ControlRequisito {
 }
 
 Inventario "1" -- "1" GestionExpedicion : administra<
-ModuloSeguridad " 1 " -- " 1 " Expedicion : >verifica
+ModuloSeguridad " 1 " -- " 1 " Expedicion : verifica<
 GestionExpedicion "1" -- " * " Expedicion : crea
-Expedicion "1" -- "  *  " EquipoTrabajo : tiene<
-EquipoTrabajo " 1 " -- " * " Investigador : posee<
+Expedicion "1" -- "  *  " EquipoDeTrabajo : tiene<
+EquipoDeTrabajo " 1 " -- " * " Investigador : posee<
 Expedicion "1  " -- "1" Bitacora : >tiene
 Bitacora " 1 " -- " * " Logro : registra<
-Inventario "1  " -- "1 " InventarioCritico
-Expedicion "1" -- "1" InventarioCritico :  tiene
+Inventario "1  " -- "1 " InventarioCritico : tiene<
+Expedicion "1" -- "1" InventarioCritico : >tiene
 ControlRequisito "1" -- "1  " Expedicion
-
+Inventario "1" -- " * " Herramienta : >contiene
 
 @enduml

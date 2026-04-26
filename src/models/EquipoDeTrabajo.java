@@ -1,8 +1,16 @@
+package src.models;
+
 import java.util.ArrayList;
+
+/**
+ * @author Maxi Moncada, Matias Moyano, Maximo Zalazar
+ * @version 2.2
+ */
+
 public class EquipoDeTrabajo {
     private String nombreEquipo;
-    private ArrayList<INVESTIGADOR> integrantes;
-    private INVESTIGADOR lider;
+    private ArrayList<Investigador> integrantes;
+    private Investigador lider;
 
     public EquipoDeTrabajo(String nombreEquipo) {
         this.nombreEquipo = nombreEquipo;
@@ -11,7 +19,7 @@ public class EquipoDeTrabajo {
     }
 
     // Añadir investigador
-    public void agregarInvestigador(INVESTIGADOR inv) {
+    public void agregarInvestigador(Investigador inv) {
         if (lider == null) {
             lider = inv;//el primero en ser agregado va a ser lider
             integrantes.add(inv);
@@ -26,7 +34,7 @@ public class EquipoDeTrabajo {
         }
     }
 
-    public void quitarInvestigador(INVESTIGADOR inv) {
+    public void quitarInvestigador(Investigador inv) {
         integrantes.remove(inv);
         if (inv == lider) {
             lider = null;
@@ -34,8 +42,8 @@ public class EquipoDeTrabajo {
         }
     }
 
-    public INVESTIGADOR buscarPorNombre(String nombre) {
-        for (INVESTIGADOR inv : integrantes) {
+    public Investigador buscarPorNombre(String nombre) {
+        for (Investigador inv : integrantes) {
             if (inv.getNombre().equalsIgnoreCase(nombre)) {
                 return inv;
             }
@@ -45,7 +53,7 @@ public class EquipoDeTrabajo {
 
     public void mostrarEquipo() {
         System.out.println("Equipo: " + nombreEquipo);
-        for (INVESTIGADOR inv : integrantes) {
+        for (Investigador inv : integrantes) {
             System.out.println("- " + inv.getNombre() + " (" + inv.getRango() + ", " + inv.getEspecialidad() + ")");
         }
         if (lider != null) {

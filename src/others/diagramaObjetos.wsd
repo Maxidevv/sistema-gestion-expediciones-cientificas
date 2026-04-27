@@ -1,0 +1,123 @@
+@startuml objeto-diagrama-expedicion
+skinparam linetype ortho
+
+' ========== GESTIÓN CENTRAL ==========
+object gestion1 {
+    expediciones = [expedicion1]
+    inventario = inventario1
+    proximoIdExpedicion = 2
+}
+
+' ========== EXPEDICIÓN ==========
+object expedicion1 {
+    id = 1
+    cupo = 3
+    destino = "Cordoba"
+    estado = "En Progreso"
+    cronograma = "15/05/2026 - 31/05/2026"
+    hito = "Recolección de muestras"
+    equipos = [equipo1]
+    bitacora = bitacora1
+    inventarioCritico = invCritico1
+    moduloSeguridad = modSeg1
+}
+
+' ========== EQUIPO DE TRABAJO ==========
+object equipo1 {
+    nombreEquipo = "Equipo Geología "Los Monos"
+    integrantes = [investigador1, investigador2, investigador3]
+    lider = investigador1
+}
+
+' ========== INVESTIGADORES ==========
+object investigador1 {
+    nombre = "Dr. Maximo Zalazar"
+    rango = "Lider"
+    especialidad = "Geología"
+}
+
+object investigador2 {
+    nombre = "Dr. Matias Moyano"
+    rango = "Miembro"
+    especialidad = "Mineralogía"
+}
+
+object invevstigador3 {
+    nombre = "Dr. Maxi Moncada"
+    rango = "Miembro"
+    especialidad = "Mineralogía"
+}
+
+' ========== BITÁCORA Y LOGRO ==========
+object bitacora1 {
+    archivo = "bitacora_expedicion_1.txt"
+    logros = [logro1]
+}
+
+object logro1 {
+    descripcion = "Se recolectaron 24 muestras de piedras raras"
+    fecha = "17/05/2026"
+    tipo = "Recolección"
+}
+
+' ========== MÓDULO SEGURIDAD ==========
+object modSeg1 {
+    estado = 3
+}
+
+' ========== INVENTARIO CRÍTICO ==========
+object invCritico1 {
+    gps = true
+    herramientas = [herr1]
+}
+
+' ========== INVENTARIO GENERAL ==========
+object inventario1 {
+    herramientas = [herr1, herr2]
+}
+
+' ========== HERRAMIENTAS ==========
+object herr1 {
+    nombre = "GPS"
+    tipo = "Electrónica"
+    estado = "disponible"
+    cantidad = 3
+}
+
+object herr2 {
+    nombre = "Martillo"
+    tipo = "Geología"
+    estado = "disponible"
+    cantidad = 3
+}
+
+' ========== CONTROL DE REQUISITOS ==========
+object control1 {
+    equipoCompleto = true
+    inventarioDisponible = true
+    cronogramaValido = true
+    seguridadAprobada = true
+}
+
+' ========== RELACIONES ==========
+gestion1 -- expedicion1
+gestion1 -- inventario1
+
+expedicion1 -- equipo1
+expedicion1 -- bitacora1
+expedicion1 -- invCritico1
+expedicion1 -- modSeg1
+expedicion1 -- control1
+
+equipo1 -- investigador1
+equipo1 -- investigador2
+equipo1 -- invevstigador3
+
+bitacora1 -- logro1
+
+inventario1 -- herr1
+inventario1 -- herr2
+
+invCritico1 -- herr1
+
+@enduml

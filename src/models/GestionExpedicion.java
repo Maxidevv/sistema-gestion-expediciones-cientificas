@@ -38,7 +38,7 @@ public class GestionExpedicion {
     public void crearExpedicion(int cupo, String destino, String estado, String cronograma, String hito) {
         Expedicion nueva = new Expedicion(proximoIdExpedicion, cupo, destino, estado, cronograma, hito);
         expediciones.add(nueva);
-        System.out.println("Expedición #" + proximoIdExpedicion + " creada exitosamente.");
+        System.out.println("Expedición n" + proximoIdExpedicion + " creada exitosamente.");
         proximoIdExpedicion++;
     }
 
@@ -55,9 +55,9 @@ public class GestionExpedicion {
         Expedicion exp = obtenerExpedicion(id);
         if (exp != null) {
             expediciones.remove(exp);
-            System.out.println("Expedición #" + id + " eliminada.");
+            System.out.println("Expedición n" + id + " eliminada.");
         } else {
-            System.out.println("Expedición #" + id + " no encontrada.");
+            System.out.println("Expedición n" + id + " no encontrada.");
         }
     }
 
@@ -72,7 +72,7 @@ public class GestionExpedicion {
     }
 
     public void mostrarInventarioGeneral() {
-        System.out.println("=== Inventario General ===");
+        System.out.println("--- Inventario General ---");
         System.out.println("Total de herramientas: " + inventario.cantidadHerramientas());
     }
 
@@ -87,7 +87,7 @@ public class GestionExpedicion {
     }
 
     public void mostrarGestion() {
-        System.out.println("=== Gestión de Expediciones ===");
+        System.out.println("--- Gestión de Expediciones ---");
         System.out.println("Total de expediciones: " + cantidadExpediciones());
         System.out.println("\nExpediciones:");
         for (Expedicion exp : expediciones) {
@@ -101,7 +101,7 @@ public class GestionExpedicion {
         if (exp != null) {
             return exp.iniciarExpedicion();
         } else {
-            System.out.println("Expedición #" + idExpedicion + " no encontrada.");
+            System.out.println("Expedición n" + idExpedicion + " no encontrada.");
             return false;
         }
     }
